@@ -49,6 +49,7 @@ func main() {
 		return c.Status(200).JSON(todo)
 	})
 
+
 	// Update a todo
 	app.Patch("/api/todos/:id", func(c *fiber.Ctx) error{
 		id := c.Params("id")
