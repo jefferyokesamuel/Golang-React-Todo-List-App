@@ -25,11 +25,17 @@ func main() {
 		log.Fatal("Error loading env file", err)	
 	}
 
+	// Connecting to DB
 	mongoUri := os.Getenv("MONGODB_URI")
 	clientOptions := options.Client().ApplyURI(mongoUri)
 	client, err := mongo.Connect(context.Background(), clientOptions)
+
 	if err != nil {
 		log.Fatal(err)	
 	}
-	err := client.Ping(context.Background(), nil)
+	err = client.Ping(context.Background(), nil)
+	if err != nil {
+		log.Fatal(err)	
+	}
+	fmt.Println("Welcome to MongoDB Atlas")
 }
